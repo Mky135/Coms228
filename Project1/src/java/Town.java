@@ -16,11 +16,13 @@ public class Town {
 	/**
 	 * Constructor to be used when user wants to generate grid randomly, with the given seed.
 	 * This constructor does not populate each cell of the grid (but should assign a 2D array to it).
-	 * @param length
-	 * @param width
+	 * @param length The length corresponds to the number of rows in the grid
+	 * @param width The width corresponds to the number of columns in the gird
 	 */
 	public Town(int length, int width) {
-		//TODO: Write your code here.
+		this.length = length;
+		this.width = width;
+		grid = new TownCell[length][width];
 	}
 	
 	/**
@@ -35,16 +37,14 @@ public class Town {
 	}
 	
 	/**
-	 * Returns width of the grid.
-	 * @return
+	 * @return Returns width of the grid.
 	 */
 	public int getWidth() {
 		return width;
 	}
 	
 	/**
-	 * Returns length of the grid.
-	 * @return
+	 * @return Returns length of the grid.
 	 */
 	public int getLength() {
 		return length;
@@ -56,9 +56,52 @@ public class Town {
 	 */
 	public void randomInit(int seed) {
 		Random rand = new Random(seed);
-		//TODO: Write your code here.
+		for (int i = 0; i < getLength(); i++) {
+			for (int j = 0; j < getWidth(); j++) {
+				int randomNumber = rand.nextInt(5);
+				grid[i][j] = new TownCell(this, i, j) {
+					@Override
+					public State who() {
+						return returnStateFromValue(randomNumber);
+					}
+
+					@Override
+					public TownCell next(Town tNew) {
+						//Todo: Figure out what to do here
+						return null;
+					}
+				};
+			}
+		}
 	}
 
+	/**
+	 * Return a State the corresponds to a numerical value
+	 * @param value A number between 0-4 inclusive
+	 * @return A State that corresponds to the value
+	 */
+	public State returnStateFromValue(int value)
+	{
+		switch (value) {
+			case 0:
+				return State.RESELLER;
+			case 1:
+				return State.EMPTY;
+			case 2:
+				return State.CASUAL;
+			case 3:
+				return State.OUTAGE;
+			case 4:
+				return State.STREAMER;
+		}
+		return null;
+	}
+
+	/**
+	 * Returns a single character String that corresponds to the letter of the TownCell type's state
+	 * @param state State of the TownCell
+	 * @return Single Letter String
+	 */
 	public String returnLetterOfCellType(State state)
 	{
 		switch (state)

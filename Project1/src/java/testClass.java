@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class testClass {
 
     //Tests if doing for i to get neighboring cells
@@ -18,6 +20,11 @@ public class testClass {
                  ) {
                 print(i);
             }
+        }
+
+        Random r = new Random();
+        for (int i = 0; i < 100; i++) {
+            print(r.nextInt(5));
         }
     }
 

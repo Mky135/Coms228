@@ -59,16 +59,23 @@ public abstract class TownCell {
 				if((r < 0 || r > town.getLength()) || (c < 0 || c > town.getWidth()))
 					continue;
 
-				if(town.grid[r][c].who() == State.RESELLER)
-					nCensus[RESELLER]++;
-				else if(town.grid[r][c].who() == State.EMPTY)
-					nCensus[EMPTY]++;
-				else if(town.grid[r][c].who() == State.CASUAL)
-					nCensus[CASUAL]++;
-				else if(town.grid[r][c].who() == State.OUTAGE)
-					nCensus[OUTAGE]++;
-				else if(town.grid[r][c].who() == State.STREAMER)
-					nCensus[STREAMER]++;
+				switch (town.grid[r][c].who()) {
+					case RESELLER:
+						nCensus[RESELLER]++;
+						break;
+					case EMPTY:
+						nCensus[EMPTY]++;
+						break;
+					case CASUAL:
+						nCensus[CASUAL]++;
+						break;
+					case OUTAGE:
+						nCensus[OUTAGE]++;
+						break;
+					case STREAMER:
+						nCensus[STREAMER]++;
+						break;
+				}
 			}
 		}
 	}

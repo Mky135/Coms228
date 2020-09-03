@@ -51,5 +51,7 @@ public class ISPBusiness {
 	 */
 	public static void main(String []args) {
 		//TODO: Write your code here.
+
+		//Option 1: call Town(rows, cols) and call randomInit(Seed)
 	}
 }
