@@ -39,8 +39,7 @@ public class Town {
 	 * @return
 	 */
 	public int getWidth() {
-		//TODO: Write/update your code here.
-		return 0;
+		return width;
 	}
 	
 	/**
@@ -48,8 +47,7 @@ public class Town {
 	 * @return
 	 */
 	public int getLength() {
-		//TODO: Write/update your code here.
-		return 0;
+		return length;
 	}
 
 	/**
@@ -60,6 +58,24 @@ public class Town {
 		Random rand = new Random(seed);
 		//TODO: Write your code here.
 	}
+
+	public String returnLetterOfCellType(State state)
+	{
+		switch (state)
+		{
+			case EMPTY:
+				return "E";
+			case CASUAL:
+				return "C";
+			case OUTAGE:
+				return "O";
+			case RESELLER:
+				return "R";
+			case STREAMER:
+				return "S";
+		}
+		return null;
+	}
 	
 	/**
 	 * Output the town grid. For each square, output the first letter of the cell type.
@@ -69,8 +85,13 @@ public class Town {
 	 */
 	@Override
 	public String toString() {
-		String s = "";
-		//TODO: Write your code here.
-		return s;
+		StringBuilder s = new StringBuilder();
+		for (int i = 0; i < getLength(); i++) {
+			for (int j = 0; j < getWidth(); j++) {
+				s.append(returnLetterOfCellType(grid[i][j].who())).append(" ");
+			}
+			s.append("\n");
+		}
+		return s.toString();
 	}
 }
