@@ -1,12 +1,12 @@
 /**
  * 
- * @author <<Write your name here>>
+ * @author Miguel Flores
  *	Also provide appropriate comments for this class
  *
  */
 public abstract class TownCell {
 
-	protected Town plain;
+	protected Town town;
 	protected int row;
 	protected int col;
 	
@@ -23,28 +23,54 @@ public abstract class TownCell {
 	//Use this static array to take census.
 	public static final int[] nCensus = new int[NUM_CELL_TYPE];
 
-	public TownCell(Town p, int r, int c) {
-		plain = p;
-		row = r;
-		col = c;
+	/**
+	 * Creates a new TownCell with it's given Town and placement inside that town
+	 * @param town The town this specific TownCell belongs to
+	 * @param row The row of which this TownCell belongs to
+	 * @param col The column of which this TownCell belongs to
+	 */
+	public TownCell(Town town, int row, int col) {
+		this.town = town;
+		this.row = row;
+		this.col = col;
 	}
 	
 	/**
 	 * Censuses all cell types in the 3 X 3 neighborhood
-	 * Use who() method to get who is present in the 
+	 * Use who() method to get who is present in the cell
 	 *  
-	 * @param counts of all customers
+	 * @param nCensus counts of all customers
 	 */
-	public void census(int nCensus[]) {
+	public void census(int[] nCensus) {
+		//TODO: Figure out why I need to use nCensus
+
 		// zero the counts of all customers
 		nCensus[RESELLER] = 0; 
 		nCensus[EMPTY] = 0; 
 		nCensus[CASUAL] = 0; 
 		nCensus[OUTAGE] = 0; 
-		nCensus[STREAMER] = 0; 
+		nCensus[STREAMER] = 0;
 
-		//TODO: Write your code here.
+		for (int i = -1; i <= 1; i++) {
+			for (int j = -1; j <= 1; j++) {
+				int r = row + i;
+				int c = col + j;
 
+				if((r < 0 || r > town.getLength()) || (c < 0 || c > town.getWidth()))
+					continue;
+
+				if(town.grid[r][c].who() == State.RESELLER)
+					nCensus[RESELLER]++;
+				else if(town.grid[r][c].who() == State.EMPTY)
+					nCensus[EMPTY]++;
+				else if(town.grid[r][c].who() == State.CASUAL)
+					nCensus[CASUAL]++;
+				else if(town.grid[r][c].who() == State.OUTAGE)
+					nCensus[OUTAGE]++;
+				else if(town.grid[r][c].who() == State.STREAMER)
+					nCensus[STREAMER]++;
+			}
+		}
 	}
 
 	/**
