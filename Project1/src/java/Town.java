@@ -62,7 +62,7 @@ public class Town {
 				grid[i][j] = new TownCell(this, i, j) {
 					@Override
 					public State who() {
-						return returnStateFromValue(randomNumber);
+						return StateSwitcher.returnStateFromValue(randomNumber);
 					}
 
 					@Override
@@ -75,50 +75,6 @@ public class Town {
 		}
 	}
 
-	/**
-	 * Return a State the corresponds to a numerical value
-	 * @param value A number between 0-4 inclusive
-	 * @return A State that corresponds to the value
-	 */
-	public State returnStateFromValue(int value)
-	{
-		switch (value) {
-			case 0:
-				return State.RESELLER;
-			case 1:
-				return State.EMPTY;
-			case 2:
-				return State.CASUAL;
-			case 3:
-				return State.OUTAGE;
-			case 4:
-				return State.STREAMER;
-		}
-		return null;
-	}
-
-	/**
-	 * Returns a single character String that corresponds to the letter of the TownCell type's state
-	 * @param state State of the TownCell
-	 * @return Single Letter String
-	 */
-	public String returnLetterOfCellType(State state)
-	{
-		switch (state)
-		{
-			case EMPTY:
-				return "E";
-			case CASUAL:
-				return "C";
-			case OUTAGE:
-				return "O";
-			case RESELLER:
-				return "R";
-			case STREAMER:
-				return "S";
-		}
-		return null;
-	}
 	
 	/**
 	 * Output the town grid. For each square, output the first letter of the cell type.
@@ -131,7 +87,7 @@ public class Town {
 		StringBuilder s = new StringBuilder();
 		for (int i = 0; i < getLength(); i++) {
 			for (int j = 0; j < getWidth(); j++) {
-				s.append(returnLetterOfCellType(grid[i][j].who())).append(" ");
+				s.append(StateSwitcher.returnLetterOfCellType(grid[i][j].who())).append(" ");
 			}
 			s.append("\n");
 		}
