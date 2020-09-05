@@ -1,7 +1,9 @@
-import java.io.File;
+import util.FileHandler;
+import util.State;
+import util.StateSwitcher;
+
 import java.io.FileNotFoundException;
 import java.util.Random;
-import java.util.Scanner;
 
 
 /**
@@ -33,7 +35,35 @@ public class Town {
 	 * @throws FileNotFoundException
 	 */
 	public Town(String inputFileName) throws FileNotFoundException {
-		//TODO: Write your code here.
+		FileHandler fileHandler = new FileHandler(inputFileName);
+
+		if(!fileHandler.exists())
+		{
+			throw new FileNotFoundException();
+		}
+
+		String size = fileHandler.getLine(0);
+		this.length = Integer.parseInt(size.substring(0,size.indexOf(" ")));
+		this.width = Integer.parseInt(size.substring(size.indexOf(" ")+1));
+		grid = new TownCell[length][width];
+
+		for (int i = 0; i < length; i++) {
+			String row = fileHandler.getLine(i+1).replaceAll(" ", "");
+			for (int j = 0; j < width; j++) {
+				State state = StateSwitcher.returnStateFromString(row.charAt(j));
+				grid[i][j] = new TownCell(this, i, j) {
+					@Override
+					public State who() {
+						return state;
+					}
+
+					@Override
+					public TownCell next(Town tNew) {
+						return null;
+					}
+				};
+			}
+		}
 	}
 	
 	/**

@@ -1,3 +1,6 @@
+import util.State;
+import util.StateSwitcher;
+
 /**
  * @author Miguel Flores
  * Also provide appropriate comments for this class
@@ -58,7 +61,7 @@ public abstract class TownCell {
     /**
      * Gets the identity of the cell.
      *
-     * @return State
+     * @return util.State
      */
     public abstract State who();
 

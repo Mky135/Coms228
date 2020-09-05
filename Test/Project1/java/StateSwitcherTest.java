@@ -1,12 +1,14 @@
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
+import util.State;
+import util.StateSwitcher;
 
 public class StateSwitcherTest {
 
     /**
-     * Tests to see if when given the value 1 it returns State.Empty
-     * Used to test whether or not the integer value given returns the correct State
+     * Tests to see if when given the value 1 it returns util.State.Empty
+     * Used to test whether or not the integer value given returns the correct util.State
      */
     @Test
     void testReturnStateFromValue() {
@@ -14,8 +16,8 @@ public class StateSwitcherTest {
     }
 
     /**
-     * Tests to see if when given State.Reseller it returns 0
-     * Used to test whether or not the State given returns the proper integer value
+     * Tests to see if when given util.State.Reseller it returns 0
+     * Used to test whether or not the util.State given returns the proper integer value
      */
     @Test
     void testReturnValueFromState() {
@@ -23,9 +25,9 @@ public class StateSwitcherTest {
     }
 
     /**
-     * Tests to see if when given State.Streamer it returns "S"
-     * Used to test whether or not the State given
-     * returns the proper single character string that pertains to the State's first letter
+     * Tests to see if when given util.State.Streamer it returns "S"
+     * Used to test whether or not the util.State given
+     * returns the proper single character string that pertains to the util.State's first letter
      */
     @Test
     void testReturnLetterOfCellType() {

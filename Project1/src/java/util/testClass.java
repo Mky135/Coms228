@@ -1,5 +1,7 @@
-import java.util.Random;
+package util;
 
+import java.util.Random;
+//TODO: Delete before turning in
 public class testClass {
 
     //Tests if doing for i to get neighboring cells

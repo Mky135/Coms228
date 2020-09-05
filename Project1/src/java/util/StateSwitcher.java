@@ -1,5 +1,9 @@
+package util;
+
 /**
  * @author Miguel FLores
+ * This class is for ease of switching between States and whatever is needed
+ * This should centeralize everything so it's easier to look at and find
  */
 public class StateSwitcher {
 
@@ -11,10 +15,10 @@ public class StateSwitcher {
     public static final int STREAMER = 4;
 
     /**
-     * Return a State that corresponds to a numerical value
+     * Return a util.State that corresponds to a numerical value
      *
      * @param value A number between 0-4 inclusive
-     * @return A State that corresponds to the value
+     * @return A util.State that corresponds to the value
      */
     public static State returnStateFromValue(int value) {
         switch (value) {
@@ -33,10 +37,10 @@ public class StateSwitcher {
     }
 
     /**
-     * Returns an integer that corresponds to it's State
+     * Returns an integer that corresponds to it's util.State
      *
-     * @param state State that should needs to be converted into an integer
-     * @return a numerical value of the corresponding State
+     * @param state util.State that should needs to be converted into an integer
+     * @return a numerical value of the corresponding util.State
      */
     public static int returnValueFromState(State state)
     {
@@ -58,7 +62,7 @@ public class StateSwitcher {
     /**
      * Returns a single character String that corresponds to the letter of the TownCell type's state
      *
-     * @param state State of the TownCell
+     * @param state util.State of the TownCell
      * @return Single Letter String
      */
     public static String returnLetterOfCellType(State state) {
@@ -73,6 +77,27 @@ public class StateSwitcher {
                 return "R";
             case STREAMER:
                 return "S";
+        }
+        return null;
+    }
+
+    /**
+     * Returns the util.State that corresponds with it's single letter String
+     * @param letter The letter of which the util.State represents
+     * @return util.State of which the letter corresponds to
+     */
+    public static State returnStateFromString(char letter) {
+        switch (letter) {
+            case 'E':
+                return State.EMPTY;
+            case 'C':
+                return State.CASUAL;
+            case 'O':
+                return State.OUTAGE;
+            case 'R':
+                return State.RESELLER;
+            case 'S':
+                return State.RESELLER;
         }
         return null;
     }

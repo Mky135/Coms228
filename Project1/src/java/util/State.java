@@ -1,3 +1,5 @@
+package util;
+
 /**
  * 
  * Different type of cell customers and state.

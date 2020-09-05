@@ -1,0 +1,17 @@
+16 16
+O R O R	O R O R	O R O R	O R O R
+E E C O	E E C O	E E C O	E E C O
+E S O S	E S O S	E S O S	E S O S
+E O R R E O R R E O R R E O R R
+O R O R	O R O R	O R O R	O R O R
+E E C O	E E C O	E E C O	E E C O
+E S O S	E S O S E S O S	E S O S
+E O R R E O R R E O R R E O R R
+O R O R	O R O R	O R O R	O R O R
+E E C O	E E C O	E E C O	E E C O
+E S O S	E S O S	E S O S	E S O S
+E O R R E O R R E O R R E O R R
+O R O R	O R O R	O R O R	O R O R
+E E C O	E E C O	E E C O	E E C O
+E S O S	E S O S E S O S	E S O S
+E O R R E O R R E O R R E O R R
