@@ -26,10 +26,8 @@ public class Reseller extends TownCell {
     @Override
     public TownCell next(Town tNew) {
         census(TownCell.nCensus);
-        if ((TownCell.nCensus[StateSwitcher.EMPTY] + TownCell.nCensus[StateSwitcher.OUTAGE]) <= 1)
-            return new Reseller(tNew, row, col);
 
-        else if(TownCell.nCensus[StateSwitcher.EMPTY] >= 3)
+        if(TownCell.nCensus[StateSwitcher.EMPTY] >= 3)
             return new Empty(tNew, row, col);
 
         else if(TownCell.nCensus[StateSwitcher.CASUAL] <= 3)

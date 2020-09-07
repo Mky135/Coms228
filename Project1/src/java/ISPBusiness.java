@@ -1,3 +1,4 @@
+import util.State;
 import util.Town;
 
 import java.io.FileNotFoundException;
@@ -19,7 +20,11 @@ public class ISPBusiness {
 	 */
 	public static Town updatePlain(Town tOld) {
 		Town tNew = new Town(tOld.getLength(), tOld.getWidth());
-		//TODO: Write your code here.
+		for (int i = 0; i < tOld.getLength(); i++) {
+			for (int j = 0; j < tOld.getWidth(); j++) {
+				tNew.grid[i][j] = tOld.grid[i][j].next(tNew);
+			}
+		}
 		return tNew;
 	}
 	
@@ -29,8 +34,14 @@ public class ISPBusiness {
 	 * @return
 	 */
 	public static int getProfit(Town town) {
-		//TODO: Write/update your code here.
-		return 0;
+		int casualUsers = 0;
+		for (int i = 0; i < town.getLength(); i++) {
+			for (int j = 0; j < town.getWidth(); j++) {
+				if(town.grid[i][j].who() == State.CASUAL)
+					casualUsers++;
+			}
+		}
+		return casualUsers;
 	}
 	
 
