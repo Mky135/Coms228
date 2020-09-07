@@ -2,6 +2,7 @@ import util.State;
 import util.Town;
 
 import java.io.FileNotFoundException;
+import java.util.Objects;
 import java.util.Scanner;
 
 /**
@@ -63,15 +64,15 @@ public class ISPBusiness {
 	 * 
 	 */
 	public static void main(String []args) throws FileNotFoundException {
-		//TODO: Write your code here.
+
 		Scanner scanner = new Scanner(System.in);
-		Town town;
-		//Option 1: call util.Town(rows, cols) and call randomInit(Seed)
+		Town town = null;
 		System.out.print("How to populate grid (type 1 or 2): 1: from a file. 2: randomly with seed \n");
 		int option = scanner.nextInt();
 		if (option == 1)
 		{
-			System.out.print("Please enter file path:");
+			System.out.print("Please enter file path: \n");
+			scanner = new Scanner(System.in);
 			String file = scanner.nextLine();
 			town = new Town(file);
 			System.out.println();
@@ -91,5 +92,14 @@ public class ISPBusiness {
 			System.out.println(town);
 		}
 
+		int profit = 0;
+		int potentialProfitPerMonth = Objects.requireNonNull(town).getLength() * town.getWidth();
+
+		for (int i = 0; i < 12; i++) {
+			profit += getProfit(town);
+			town = updatePlain(town);
+		}
+
+		System.out.println((double) profit/(potentialProfitPerMonth*12) * 100.0);
 	}
 }

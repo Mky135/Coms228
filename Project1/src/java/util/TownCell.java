@@ -2,7 +2,13 @@ package util;
 
 /**
  * @author Miguel Flores
- * Also provide appropriate comments for this class
+ * TownCell is an abstract class that helps take a census of neighboring cells
+ * in its given town.
+ * A TownCell is defined by the town its in, position inside the town
+ * and util.State
+ * <p>
+ * TownCell has two abstract methods that need to be implemented
+ * who() and next()
  */
 public abstract class TownCell {
 
@@ -30,7 +36,6 @@ public abstract class TownCell {
 
     /**
      * Censuses all cell types in the 3 X 3 neighborhood
-     * Use who() method to get who is present in the cell
      *
      * @param nCensus counts of all customers
      */

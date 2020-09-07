@@ -102,19 +102,27 @@ public class StateSwitcher {
         return null;
     }
 
-    public static TownCell returnTownCellFromState(State state, Town town, int row, int column)
+    /**
+     * Returns util.TownCell corresponds with it's single letter String
+     * @param state util.State
+     * @param town The town this specific util.TownCell belongs to
+     * @param row  The row of which this util.TownCell belongs to
+     * @param col  The column of which this util.TownCell belongs to
+     * @return util.TownCell of that State
+     */
+    public static TownCell returnTownCellFromState(State state, Town town, int row, int col)
     {
         switch (state) {
             case EMPTY:
-                return new states.Empty(town, row, column);
+                return new states.Empty(town, row, col);
             case CASUAL:
-                return new states.Casual(town, row, column);
+                return new states.Casual(town, row, col);
             case OUTAGE:
-                return new states.Outage(town, row, column);
+                return new states.Outage(town, row, col);
             case RESELLER:
-                return new states.Reseller(town, row, column);
+                return new states.Reseller(town, row, col);
             case STREAMER:
-                return new states.Streamer(town, row, column);
+                return new states.Streamer(town, row, col);
         }
         return null;
     }

@@ -52,11 +52,8 @@ public class Empty extends TownCell {
     public TownCell next(Town tNew) {
         census(TownCell.nCensus);
 
-        if ((TownCell.nCensus[StateSwitcher.EMPTY] + TownCell.nCensus[StateSwitcher.OUTAGE]) <= 1)
+        if ((TownCell.nCensus[StateSwitcher.EMPTY]-1 + TownCell.nCensus[StateSwitcher.OUTAGE]) <= 1)
             return new Reseller(tNew, row, col);
-
-        else if ((TownCell.nCensus[StateSwitcher.CASUAL]) >= 5)
-            return new Streamer(tNew, row, col);
 
         else
             return new Casual(tNew, row, col);

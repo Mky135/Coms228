@@ -15,18 +15,12 @@ public class FileHandler extends File {
     private final String fileName;
 
     /**
-     * The {@link File} object representing the file
-     */
-    private File file;
-
-    /**
      * Creates a new file object using the directory of the fileName
      * @param fileName
      */
     public FileHandler(String fileName) {
         super(fileName);
         this.fileName = fileName;
-        file = new File(fileName);
     }
 
     /**
@@ -43,28 +37,4 @@ public class FileHandler extends File {
         }
         return null;
     }
-
-    /**
-     * @return Number of lines in the file
-     */
-    public int getNumLines() {
-        int count = 0;
-        if (file.exists()) {
-            try {
-                FileReader fileReader = new FileReader(file);
-                BufferedReader bufferedReader = new BufferedReader(fileReader);
-
-                while (bufferedReader.readLine() != null) {
-                    count++;
-                }
-
-                fileReader.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        return count;
-    }
-
 }

@@ -7,7 +7,7 @@ import java.util.Random;
 
 /**
  *  @author Miguel Flores
- *
+ *	util.Town is a class for initalizing a 2D Array of util.Towncell
  */
 public class Town {
 	
@@ -30,8 +30,8 @@ public class Town {
 	 * Constructor to be used when user wants to populate grid based on a file.
 	 * Please see that it simple throws FileNotFoundException exception instead of catching it.
 	 * Ensure that you close any resources (like file or scanner) which is opened in this function.
-	 * @param inputFileName
-	 * @throws FileNotFoundException
+	 * @param inputFileName String of the fileName
+	 * @throws FileNotFoundException throws if file is not found with that directory or fileName
 	 */
 	public Town(String inputFileName) throws FileNotFoundException {
 		FileHandler fileHandler = new FileHandler(inputFileName);
@@ -71,7 +71,7 @@ public class Town {
 
 	/**
 	 * Initialize the grid by randomly assigning cell with one of the following class object:
-	 * states.Casual, Empty, Outage, Reseller OR Streamer
+	 * states.Casual, states.Empty, states.Outage, states.Reseller OR states.Streamer
 	 */
 	public void randomInit(int seed) {
 		Random rand = new Random(seed);
@@ -89,6 +89,7 @@ public class Town {
 	 * Each letter should be separated either by a single space or a tab.
 	 * And each row should be in a new line. There should not be any extra line between 
 	 * the rows.
+	 * @return String of grid values
 	 */
 	@Override
 	public String toString() {
