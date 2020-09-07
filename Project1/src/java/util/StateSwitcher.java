@@ -97,7 +97,7 @@ public class StateSwitcher {
             case 'R':
                 return State.RESELLER;
             case 'S':
-                return State.RESELLER;
+                return State.STREAMER;
         }
         return null;
     }

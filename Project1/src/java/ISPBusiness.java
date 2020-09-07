@@ -49,9 +49,34 @@ public class ISPBusiness {
 	 * @param args
 	 * 
 	 */
-	public static void main(String []args) {
+	public static void main(String []args) throws FileNotFoundException {
 		//TODO: Write your code here.
-
+		Scanner scanner = new Scanner(System.in);
+		Town town;
 		//Option 1: call Town(rows, cols) and call randomInit(Seed)
+		System.out.print("How to populate grid (type 1 or 2): 1: from a file. 2: randomly with seed \n");
+		int option = scanner.nextInt();
+		if (option == 1)
+		{
+			System.out.print("Please enter file path:");
+			String file = scanner.nextLine();
+			town = new Town(file);
+			System.out.println();
+		}
+		else if (option == 2)
+		{
+			System.out.print("Provide rows, cols and seed integer separated by spaces: \n");
+			scanner = new Scanner(System.in);
+			String input = scanner.nextLine();
+			int length = Integer.parseInt(input.substring(0, input.indexOf(" ")));
+			input = input.substring(input.indexOf(" ")+1);
+			int width = Integer.parseInt(input.substring(0, input.indexOf(" ")));
+			input = input.substring(input.indexOf(" ")+1);
+			int seed = Integer.parseInt(input);
+			town = new Town(length, width);
+			town.randomInit(seed);
+			System.out.println(town);
+		}
+
 	}
 }

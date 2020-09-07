@@ -1,0 +1,25 @@
+Casual:
+    IF reseller is its neighborhood (3x3) then it turns to Outage
+    IF no reseller but streamer then it becomes streamer
+
+Streamer:
+    IF reseller in its neighborhood then it turns to Outage
+    IF no reseller but any outage then it becomes Empty
+
+Reseller:
+    IF 3 or fewer casual then it becomes empty
+    IF 3 or more empty then it becomes empty //Priority
+
+Outage:
+    Becomes empty
+
+Empty:
+    Becomes casual 
+
+Additional Rules:
+    IF not Reseller or Outage and (empty >= 1 or outage >= 1) then it converts to Reseller
+    IF nothing else, any cell with 5 or more casual neighbors becomes a streamer
+
+IF literally nothing else, then the cells remains the same
+
+ALL CELLS UPDATE AT THE SAME TIME

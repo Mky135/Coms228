@@ -36,8 +36,6 @@ public abstract class TownCell {
      * @param nCensus counts of all customers
      */
     public void census(int[] nCensus) {
-        //TODO: Figure out why I need to use nCensus
-
         // zero the counts of all customers
         nCensus[StateSwitcher.RESELLER] = 0;
         nCensus[StateSwitcher.EMPTY] = 0;
@@ -50,7 +48,7 @@ public abstract class TownCell {
                 int r = row + i;
                 int c = col + j;
 
-                if ((r < 0 || r > town.getLength()) || (c < 0 || c > town.getWidth()))
+                if ((r < 0 || r > town.getLength()-1) || (c < 0 || c > town.getWidth()-1))
                     continue;
 
                 nCensus[StateSwitcher.returnValueFromState(town.grid[r][c].who())]++;
