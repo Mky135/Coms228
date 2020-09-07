@@ -60,9 +60,9 @@ public class StateSwitcher {
     }
 
     /**
-     * Returns a single character String that corresponds to the letter of the TownCell type's state
+     * Returns a single character String that corresponds to the letter of the util.TownCell type's state
      *
-     * @param state util.State of the TownCell
+     * @param state util.State of the util.TownCell
      * @return Single Letter String
      */
     public static String returnLetterOfCellType(State state) {
@@ -98,6 +98,23 @@ public class StateSwitcher {
                 return State.RESELLER;
             case 'S':
                 return State.STREAMER;
+        }
+        return null;
+    }
+
+    public static TownCell returnTownCellFromState(State state, Town town, int row, int column)
+    {
+        switch (state) {
+            case EMPTY:
+                return new states.Empty(town, row, column);
+            case CASUAL:
+                return new states.Casual(town, row, column);
+            case OUTAGE:
+                return new states.Outage(town, row, column);
+            case RESELLER:
+                return new states.Reseller(town, row, column);
+            case STREAMER:
+                return new states.Streamer(town, row, column);
         }
         return null;
     }

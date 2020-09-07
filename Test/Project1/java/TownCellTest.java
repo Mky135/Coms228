@@ -2,9 +2,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 import util.StateSwitcher;
+import util.Town;
+import util.TownCell;
 
 import java.io.FileNotFoundException;
-import java.util.Arrays;
 
 public class TownCellTest {
 

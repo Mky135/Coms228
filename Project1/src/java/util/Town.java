@@ -1,8 +1,7 @@
-import util.FileHandler;
-import util.State;
-import util.StateSwitcher;
+package util;
 
 import java.io.FileNotFoundException;
+import java.util.Objects;
 import java.util.Random;
 
 
@@ -51,17 +50,7 @@ public class Town {
 			String row = fileHandler.getLine(i+1).replaceAll(" ", "");
 			for (int j = 0; j < width; j++) {
 				State state = StateSwitcher.returnStateFromString(row.charAt(j));
-				grid[i][j] = new TownCell(this, i, j) {
-					@Override
-					public State who() {
-						return state;
-					}
-
-					@Override
-					public TownCell next(Town tNew) {
-						return null;
-					}
-				};
+				grid[i][j] = StateSwitcher.returnTownCellFromState(Objects.requireNonNull(state), this, i, j);
 			}
 		}
 	}
@@ -82,25 +71,14 @@ public class Town {
 
 	/**
 	 * Initialize the grid by randomly assigning cell with one of the following class object:
-	 * Casual, Empty, Outage, Reseller OR Streamer
+	 * states.Casual, Empty, Outage, Reseller OR Streamer
 	 */
 	public void randomInit(int seed) {
 		Random rand = new Random(seed);
 		for (int i = 0; i < getLength(); i++) {
 			for (int j = 0; j < getWidth(); j++) {
 				int randomNumber = rand.nextInt(5);
-				grid[i][j] = new TownCell(this, i, j) {
-					@Override
-					public State who() {
-						return StateSwitcher.returnStateFromValue(randomNumber);
-					}
-
-					@Override
-					public TownCell next(Town tNew) {
-						//Todo: Figure out what to do here
-						return null;
-					}
-				};
+				grid[i][j] = StateSwitcher.returnTownCellFromState(Objects.requireNonNull(StateSwitcher.returnStateFromValue(randomNumber)), this, i, j);
 			}
 		}
 	}

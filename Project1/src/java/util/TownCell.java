@@ -1,5 +1,4 @@
-import util.State;
-import util.StateSwitcher;
+package util;
 
 /**
  * @author Miguel Flores
@@ -17,11 +16,11 @@ public abstract class TownCell {
     public static final int[] nCensus = new int[NUM_CELL_TYPE];
 
     /**
-     * Creates a new TownCell with it's given Town and placement inside that town
+     * Creates a new util.TownCell with it's given util.Town and placement inside that town
      *
-     * @param town The town this specific TownCell belongs to
-     * @param row  The row of which this TownCell belongs to
-     * @param col  The column of which this TownCell belongs to
+     * @param town The town this specific util.TownCell belongs to
+     * @param row  The row of which this util.TownCell belongs to
+     * @param col  The column of which this util.TownCell belongs to
      */
     public TownCell(Town town, int row, int col) {
         this.town = town;
@@ -67,7 +66,7 @@ public abstract class TownCell {
      * Determines the cell type in the next cycle.
      *
      * @param tNew: town of the next cycle
-     * @return TownCell
+     * @return util.TownCell
      */
     public abstract TownCell next(Town tNew);
 }
