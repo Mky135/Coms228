@@ -1,6 +1,7 @@
 package states;
 
 import util.State;
+import util.StateSwitcher;
 import util.Town;
 import util.TownCell;
 
@@ -24,6 +25,17 @@ public class Streamer extends TownCell {
 
     @Override
     public TownCell next(Town tNew) {
-        return null;
+        census(TownCell.nCensus);
+        if ((TownCell.nCensus[StateSwitcher.EMPTY] + TownCell.nCensus[StateSwitcher.OUTAGE]) <= 1)
+            return new Reseller(tNew, row, col);
+
+        else if(TownCell.nCensus[StateSwitcher.RESELLER] >= 1)
+            return new Outage(tNew, row, col);
+
+        else if(TownCell.nCensus[StateSwitcher.OUTAGE] >= 1)
+            return new Empty(tNew, row, col);
+
+        else
+            return new Streamer(tNew, row, col);
     }
 }

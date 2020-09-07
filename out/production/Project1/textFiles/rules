@@ -1,4 +1,4 @@
-states.Casual:
+Casual:
     IF reseller is its neighborhood (3x3) then it turns to Outage
     IF no reseller but streamer then it becomes streamer
 
@@ -17,7 +17,7 @@ Empty:
     Becomes casual
 
 Additional Rules:
-    IF not Reseller or Outage and (empty >= 1 or outage >= 1) then it converts to Reseller
+    IF not Reseller or Outage and (empty >= 1 or outage >= 1) then it converts to Reseller //TOP PRIORITY
     IF nothing else, any cell with 5 or more casual neighbors becomes a streamer
 
 IF literally nothing else, then the cells remains the same

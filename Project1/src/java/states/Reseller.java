@@ -1,6 +1,7 @@
 package states;
 
 import util.State;
+import util.StateSwitcher;
 import util.Town;
 import util.TownCell;
 
@@ -24,6 +25,20 @@ public class Reseller extends TownCell {
 
     @Override
     public TownCell next(Town tNew) {
-        return null;
+        census(TownCell.nCensus);
+        if ((TownCell.nCensus[StateSwitcher.EMPTY] + TownCell.nCensus[StateSwitcher.OUTAGE]) <= 1)
+            return new Reseller(tNew, row, col);
+
+        else if(TownCell.nCensus[StateSwitcher.EMPTY] >= 3)
+            return new Empty(tNew, row, col);
+
+        else if(TownCell.nCensus[StateSwitcher.CASUAL] <= 3)
+            return new Empty(tNew, row, col);
+
+        else if ((TownCell.nCensus[StateSwitcher.CASUAL]) >= 5)
+            return new Streamer(tNew, row, col);
+
+        else
+            return new Reseller(tNew, row, col);
     }
 }
