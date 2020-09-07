@@ -5,6 +5,13 @@ import util.StateSwitcher;
 import util.Town;
 import util.TownCell;
 
+/**
+ * @Author Miguel Flores
+ * <p>
+ * Outage class implements util.TownCell's abstract methods
+ * in order to define this class as one that returns util.State.OUTAGE
+ * and that changes to the appropriate "State" when next() is called
+ */
 public class Outage extends TownCell {
 
     /**
@@ -18,11 +25,26 @@ public class Outage extends TownCell {
         super(town, row, col);
     }
 
+    /**
+     * Method returns the util.State of this util.TownCell
+     * @return util.State.OUTAGE
+     */
     @Override
     public State who() {
         return State.OUTAGE;
     }
 
+    /**
+     * Determines the cell type in the next cycle.
+     * <p>
+     * Rules:
+     * If 5 or more casual neighbors coverts to Streamer
+     * <p>
+     * If not then stays the same
+     *
+     * @param tNew: town of the next cycle
+     * @return util.TownCell of the next cycle
+     */
     @Override
     public TownCell next(Town tNew) {
         census(TownCell.nCensus);
